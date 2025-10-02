@@ -69,6 +69,49 @@ document.addEventListener('DOMContentLoaded', function () {
     return;
   }
 
+  // Search suggestions: on koleksi pages, show suggestion buttons under the search bar
+  (function () {
+    // find the search bar container and existing tag links on the page
+    const searchSection = document.querySelector('.search-bar');
+    if (!searchSection) return;
+
+    // collect unique tag names from .tag anchors in the page (use their textContent)
+    const tagLinks = Array.from(document.querySelectorAll('a.tag'));
+    const suggestions = [];
+    tagLinks.forEach(a => {
+      const text = (a.textContent || '').trim();
+      if (text && !suggestions.includes(text)) suggestions.push(text);
+    });
+
+    if (suggestions.length === 0) return;
+
+    const box = document.createElement('div');
+    box.className = 'search-suggestions';
+    suggestions.slice(0, 10).forEach(s => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'suggestion';
+      btn.textContent = s;
+      btn.addEventListener('click', function () {
+        // set search input and trigger search behavior: on collection pages perform in-page filtering
+        searchInput.value = s;
+        // if page has koleksi container, run doSearch() if available
+        if (typeof doSearch === 'function') {
+          // trigger input event to doSearch (debounce handled)
+          const ev = new Event('input', { bubbles: true });
+          searchInput.dispatchEvent(ev);
+        } else {
+          // fallback: redirect to koleksi1.html?q=...
+          window.location.href = 'koleksi1.html?q=' + encodeURIComponent(s);
+        }
+      });
+      box.appendChild(btn);
+    });
+
+    // insert suggestions after the search bar
+    searchSection.parentNode.insertBefore(box, searchSection.nextSibling);
+  })();
+
   // collect possible containers where cards live (non-index pages)
   const containers = Array.from(document.querySelectorAll('.koleksi, .highlight-items'));
   if (containers.length === 0) return;
