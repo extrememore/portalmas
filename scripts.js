@@ -15,6 +15,26 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  // Back-to-top button behavior (show after scrolling)
+  (function () {
+    const btn = document.getElementById('backToTop');
+    if (!btn) return;
+    function toggleBtn() {
+      if (window.scrollY > 300) btn.classList.add('show'); else btn.classList.remove('show');
+    }
+    window.addEventListener('scroll', toggleBtn, { passive: true });
+    toggleBtn();
+
+    btn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // cleanup listeners if page unloads (not strictly necessary but tidy)
+    window.addEventListener('beforeunload', function () {
+      window.removeEventListener('scroll', toggleBtn);
+    });
+  })();
+
   const searchInput = document.querySelector('.search-bar input');
   if (!searchInput) return; // nothing to do on pages without a search bar
 
@@ -23,14 +43,14 @@ document.addEventListener('DOMContentLoaded', function () {
   const hasKoleksi = !!document.querySelector('.koleksi');
   const isIndexLike = hasHighlight && !hasKoleksi;
 
-  // If index-like page: redirect search queries to koleksi.html?q=...
+  // If index-like page: redirect search queries to koleksi1.html?q=...
   if (isIndexLike) {
     // redirect on Enter or when the search button is clicked. Do NOT perform in-page filtering.
     searchInput.addEventListener('keydown', function (e) {
       if (e.key === 'Enter') {
         const q = searchInput.value.trim();
         if (q) {
-          const target = 'koleksi.html?q=' + encodeURIComponent(q);
+          const target = 'koleksi1.html?q=' + encodeURIComponent(q);
           window.location.href = target;
         }
       }
@@ -41,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
       btn.addEventListener('click', function () {
         const q = searchInput.value.trim();
         if (q) {
-          window.location.href = 'koleksi.html?q=' + encodeURIComponent(q);
+          window.location.href = 'koleksi1.html?q=' + encodeURIComponent(q);
         }
       });
     }
