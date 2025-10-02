@@ -105,6 +105,26 @@ header nav a:hover {
   padding: 6px 8px;
 }
 
+
+  /* Search suggestions (below the input) */
+  .search-suggestions {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .search-suggestions button.suggestion {
+    background: rgba(0,112,209,0.08);
+    color: #0059b2;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 700;
+  }
+  .search-suggestions button.suggestion:hover { background: rgba(0,112,209,0.14); }
+  .search-suggestions button.suggestion:focus { outline: 3px solid rgba(0,112,209,0.12); }
 .dropdown-content {
   display: none;
   position: absolute;
@@ -155,10 +175,6 @@ header nav a:hover {
 /* Collection controls: title on left, pager on right */
 .collection-controls { display: flex; justify-content: space-between; align-items: center; margin: 12px 0 6px; }
 .collection-controls .col-left { font-weight: 700; color: #07304a; }
-.collections-pager { display: flex; gap: 10px; }
-.collections-pager .page-link { padding: 8px 12px; border-radius: 6px; text-decoration: none; color: #004080; font-weight: 700; background: transparent; }
-.collections-pager .page-link.active { background: #e8f3ff; box-shadow: inset 0 -3px 0 #005bb5; color: #003a6a; }
-
 
 .search-bar input {
   width: 72%;
@@ -260,6 +276,12 @@ header nav a:hover {
   display: block;
   color: inherit;
   text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 .card .img-wrap {
