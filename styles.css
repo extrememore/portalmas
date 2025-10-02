@@ -18,6 +18,27 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
+  /* smooth transitions for background and color when toggling scrolled state */
+  transition: background-color 220ms cubic-bezier(.2,.8,.2,1),
+              color 220ms cubic-bezier(.2,.8,.2,1),
+              box-shadow 220ms cubic-bezier(.2,.8,.2,1);
+}
+
+/* Header when page is scrolled: light background and darker text for readability */
+/* We apply the scrolled class to the body element (body.scrolled) so transitions apply to the header and children */
+body.scrolled header {
+  background-color: #fff !important;
+  color: #072033 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+body.scrolled header a,
+body.scrolled .dropbtn,
+body.scrolled header nav a { color: #072033 !important; }
+body.scrolled header .logo h1 { color: #072033 !important; }
+
+/* add transitions to header children so their color changes animate smoothly */
+header a, .dropbtn, header nav a, header .logo h1 {
+  transition: color 180ms cubic-bezier(.2,.8,.2,1);
 }
 
 header .logo {
@@ -26,20 +47,74 @@ header .logo {
 }
 
 header .logo img {
-  height: 40px;
-  margin-right: 10px;
+  height: 80px; /* slightly larger so logo balances with title */
+  margin-right: 12px;
+}
+
+header .logo h1 {
+  margin: 0;
+  font-size: 1.5rem; /* keeps title proportional to logo */
+  font-weight: 700;
+  line-height: 1;
 }
 
 header nav a {
   color: #fff;
   margin-left: 20px;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1;
+  padding: 6px 8px;
 }
 
 header nav a:hover {
   text-decoration: underline;
 }
+
+/* Dropdown menu (used on overview page) */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-left: 12px;
+}
+
+.dropbtn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+/* Make dropbtn visually match nav links */
+.dropbtn {
+  font-size: 15px;
+  line-height: 1;
+  padding: 6px 8px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 210px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  z-index: 2000;
+  right: 0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.dropdown-content a {
+  color: #004080;
+  padding: 10px 12px;
+  display: block;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover { background: #f2f8ff; }
+
+.dropdown:hover .dropdown-content { display: block; }
 
 .container {
   max-width: 1100px;
@@ -51,6 +126,10 @@ header nav a:hover {
 .search-bar {
   margin: 20px 0;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  align-items: center;
 }
 
 .search-bar input {
@@ -59,6 +138,32 @@ header nav a:hover {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+}
+
+/* Search button styling to match theme */
+.search-btn {
+  background: #0070d1; /* slightly lighter blue than header */
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+  transition: background 150ms ease, transform 120ms ease;
+}
+
+.search-btn:hover {
+  background: #005bb5;
+  transform: translateY(-1px);
+}
+
+.search-btn:active {
+  transform: translateY(0);
+}
+
+.search-btn:focus {
+  outline: 3px solid rgba(0,112,209,0.18);
 }
 
 /* Highlight Arsip */
@@ -85,11 +190,112 @@ header nav a:hover {
   text-align: center;
 }
 
-.card img {
-  max-width: 100%;
-  border-radius: 5px;
+.card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.card .img-wrap {
+  width: 100%;
+  height: 220px; /* fixed height to equalize thumbnails */
+  overflow: hidden;
+  border-radius: 6px;
   margin-bottom: 10px;
 }
+
+.card .img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* crop to fill */
+  display: block;
+}
+
+.card h3 { margin-top: 8px; }
+
+.tag {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 4px 8px;
+  background: rgba(0, 64, 128, 0.08);
+  color: #004080;
+  font-size: 12px;
+  border-radius: 12px;
+}
+
+/* Arsip Fakultas — three-column vertical list with separators (reference style) */
+.arsip-fakultas {
+  margin: 0; /* remove vertical spacing above/below section */
+  padding: 0; /* let container control side padding */
+}
+.arsip-fakultas h2 {
+  margin: 0 0 8px 0; /* small gap below heading only */
+  color: #004080;
+  padding-left: 0;
+}
+
+.fakultas-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0 24px; /* no vertical gap, 24px horizontal gap between columns */
+  margin: 0; /* no extra margin above/below list */
+}
+
+.fakultas-list a.tag {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 10px; /* compact vertical spacing to remove visual gaps */
+  background: #004080;
+  color: #fff; /* darker blue for link text */
+  text-decoration: none;
+  border-bottom: 1px solid #124579; /* horizontal separator */
+  font-weight: 600;
+}
+
+.fakultas-list a.tag::after {
+  content: '\2192'; /* right arrow */
+  color: #fff;
+  font-size: 18px;
+  margin-left: 12px;
+}
+
+.fakultas-list a.tag:hover {
+  background: #0059b2;
+}
+
+/* Make each column have its own vertical flow - add a subtle column separator via gap */
+.fakultas-list > * { border-right: 0; }
+
+/* Responsive: 2 columns on medium screens, 1 on small */
+@media (max-width: 900px) {
+  .fakultas-list { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .fakultas-list { grid-template-columns: 1fr; }
+}
+
+/* Kategori (small cards) */
+.kategori { margin: 24px 0; }
+.kategori h2 { margin-bottom: 12px; color: #004080; }
+.kategori-list { display: flex; gap: 10px; flex-wrap: wrap; }
+.kategori-list a.tag {
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px 12px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+  color: #004080;
+  text-decoration: none;
+  font-weight: 600;
+}
+.kategori-list a.tag:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+
+/* Section separator decorative SVG */
+.section-separator { margin: 18px 0 -6px; line-height: 0; }
+.section-separator svg { display: block; width: 100%; height: 48px; }
+.section-separator .alt path { fill: #f2f8ff; }
+.section-separator.wave svg path { opacity: 0.95; }
+
 
 /* Koleksi grid */
 .koleksi {
@@ -130,14 +336,61 @@ header nav a:hover {
 footer {
   background: #004080;
   color: #fff;
-  text-align: center;
-  padding: 20px;
+  padding: 24px 20px;
   margin-top: 40px;
 }
 
-footer .info {
-  margin-bottom: 10px;
+/* Footer two-column layout: left = logo + details, right = map */
+.footer-grid {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  max-width: 1100px;
+  margin: 0 auto;
 }
+
+.footer-left {
+  flex: 1 1 320px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.footer-logo img {
+  width: 140px; /* logo area that "memanjang" horizontally */
+  height: auto;
+  object-fit: contain;
+}
+
+.footer-details { color: #fff; }
+.footer-details .org-name { font-weight: 700; margin: 0 0 6px; }
+.footer-details p { margin: 4px 0; color: rgba(255,255,255,0.9); }
+
+.social {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+}
+.social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+.social a:hover { background: rgba(255,255,255,0.18); }
+
+.footer-right {
+  flex: 0 0 420px; /* map column */
+}
+.footer-right iframe { width: 100%; height: 200px; border: 0; border-radius: 6px; }
+
+.footer-bottom { display:none; }
 
 iframe {
   width: 100%;
@@ -158,4 +411,19 @@ iframe {
   .search-bar input {
     width: 100%;
   }
+  .search-bar {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+  .search-btn {
+    width: 100%;
+  }
+  /* stack footer on smaller screens */
+  .footer-grid { flex-direction: column; }
+  .footer-right { flex: 1 1 auto; }
+  .footer-logo img { width: 120px; }
+  /* scale down header logo + title on very small screens */
+  header .logo img { height: 44px; }
+  header .logo h1 { font-size: 1rem; }
 }

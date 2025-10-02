@@ -11,12 +11,19 @@
   <!-- Header -->
   <header>
     <div class="logo">
-      <img src="https://via.placeholder.com/40" alt="Logo">
+      <img src="img/logo.png" alt="Logo">
       <h1>Arsip Universitas Airlangga</h1>
     </div>
     <nav>
       <a href="index.html">Home</a>
-      <a href="overview.html">Overview</a>
+      <div class="dropdown">
+        <button class="dropbtn">Overview ▾</button>
+        <div class="dropdown-content">
+          <a href="about-us.html">Tentang Kami</a>
+          <a href="about-website.html">Tentang Website</a>
+          <a href="processing-methods.html">Metode Pengolahan Koleksi</a>
+        </div>
+      </div>
       <a href="koleksi.html">Koleksi</a>
     </nav>
   </header>
@@ -32,40 +39,128 @@
     <!-- Search Bar -->
     <section class="search-bar">
       <input type="text" placeholder="Cari arsip...">
+      <button type="button" class="search-btn">Cari</button>
     </section>
 
     <!-- Highlight Arsip -->
     <section class="highlight">
       <h2>Highlight Arsip</h2>
       <div class="highlight-items">
-        <div class="card">
-          <img src="https://via.placeholder.com/250x150" alt="Arsip 1">
+        <a class="card" href="detail-arsip.html">
+          <div class="img-wrap"><img src="img/gubes.jpeg" alt="Arsip 1"></div>
           <h3>Judul Arsip 1</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur.</p>
-        </div>
-        <div class="card">
-          <img src="https://via.placeholder.com/250x150" alt="Arsip 2">
+          <p>Lorem ipsum dolor sit amet, consectetur GUBES.</p>
+          <span class="tag">FISIP</span>
+          <span class="tag">Dokumentasi</span>
+        </a>
+        <a class="card" href="detail-arsip.html">
+          <div class="img-wrap"><img src="img/magang.jpeg" alt="Arsip 2"></div>
           <h3>Judul Arsip 2</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur.</p>
-        </div>
-        <div class="card">
-          <img src="https://via.placeholder.com/250x150" alt="Arsip 3">
+          <p>Lorem ipsum dolor sit amet, consectetur MAGANG.</p>
+          <span class="tag">Foto</span>
+        </a>
+        <a class="card" href="detail-arsip.html">
+          <div class="img-wrap"><img src="img/bem.jpg" alt="Arsip 3"></div>
           <h3>Judul Arsip 3</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur.</p>
-        </div>
+          <p>Lorem ipsum dolor sit amet, consectetur BEM.</p>
+          <span class="tag">Publikasi</span>
+        </a>
+        <a class="card" href="detail-arsip.html">
+          <div class="img-wrap"><img src="img/gubes.jpeg" alt="Arsip 1"></div>
+          <h3>Judul Arsip 1</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur GUBES.</p>
+          <span class="tag">FISIP</span>
+          <span class="tag">Dokumentasi</span>
+        </a>
+        <a class="card" href="detail-arsip.html">
+          <div class="img-wrap"><img src="img/magang.jpeg" alt="Arsip 2"></div>
+          <h3>Judul Arsip 2</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur MAGANG.</p>
+          <span class="tag">Foto</span>
+        </a>
+        <a class="card" href="detail-arsip.html">
+          <div class="img-wrap"><img src="img/bem.jpg" alt="Arsip 3"></div>
+          <h3>Judul Arsip 3</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur BEM.</p>
+          <span class="tag">Publikasi</span>
+        </a>
+        <a class="card" href="detail-arsip.html">
+          <div class="img-wrap"><img src="img/gubes.jpeg" alt="Arsip 1"></div>
+          <h3>Judul Arsip 1</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur GUBES.</p>
+          <span class="tag">FISIP</span>
+          <span class="tag">Dokumentasi</span>
+        </a>
+        <a class="card" href="detail-arsip.html">
+          <div class="img-wrap"><img src="img/magang.jpeg" alt="Arsip 2"></div>
+          <h3>Judul Arsip 2</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur MAGANG.</p>
+          <span class="tag">Foto</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Arsip Fakultas -->
+    <section class="arsip-fakultas">
+      <h2>Arsip Fakultas</h2>
+      <div class="fakultas-list">
+        <a class="tag" href="koleksi.html?q=Kedokteran">Kedokteran</a>
+        <a class="tag" href="koleksi.html?q=Kedokteran%20Gigi">Kedokteran Gigi</a>
+        <a class="tag" href="koleksi.html?q=Kedokteran%20Hewan">Kedokteran Hewan</a>
+        <a class="tag" href="koleksi.html?q=Farmasi">Farmasi</a>
+        <a class="tag" href="koleksi.html?q=Kesehatan%20Masyarakat">Kesehatan Masyarakat</a>
+        <a class="tag" href="koleksi.html?q=Keperawatan">Keperawatan</a>
+        <a class="tag" href="koleksi.html?q=Hukum">Hukum</a>
+        <a class="tag" href="koleksi.html?q=Ekonomi%20dan%20Bisnis">Ekonomi dan Bisnis</a>
+        <a class="tag" href="koleksi.html?q=Ilmu%20Sosial%20dan%20Ilmu%20Politik">Ilmu Sosial dan Ilmu Politik</a>
+        <a class="tag" href="koleksi.html?q=Psikologi">Psikologi</a>
+        <a class="tag" href="koleksi.html?q=Ilmu%20Budaya">Ilmu Budaya</a>
+        <a class="tag" href="koleksi.html?q=Sains%20dan%20Teknologi">Sains dan Teknologi</a>
+        <a class="tag" href="koleksi.html?q=Perikanan%20dan%20Kelautan">Perikanan dan Kelautan</a>
+        <a class="tag" href="koleksi.html?q=Teknologi%20Maju%20dan%20Multidisiplin">Teknologi Maju dan Multidisiplin</a>
+        <a class="tag" href="koleksi.html?q=Vokasi">Vokasi</a>
+      </div>
+    </section>
+
+    <!-- Kategori Arsip -->
+    <section class="kategori">
+      <h2>Kategori</h2>
+      <div class="kategori-list">
+        <a class="tag" href="koleksi.html?q=Dokumentasi">Dokumentasi</a>
+        <a class="tag" href="koleksi.html?q=Dokumen">Dokumen</a>
+        <a class="tag" href="koleksi.html?q=Kartografi">Kartografi</a>
+        <a class="tag" href="koleksi.html?q=Surat%20Keputusan">Surat Keputusan</a>
       </div>
     </section>
   </div>
 
+  
+
   <!-- Footer -->
   <footer>
-    <div class="info">
-      <p><strong>Arsip Universitas Airlangga</strong></p>
-      <p>Alamat: Jl. Lorem Ipsum No. 123, Surabaya</p>
-      <p>Kontak: info@arsip.unair.ac.id | (031) 1234567</p>
+    <div class="footer-grid">
+      <div class="footer-left">
+        <div class="footer-details">
+          <div class="footer-logo"><img src="img/logo2.png" alt="Logo"></div>
+          <div class="org-name">Arsip Universitas Airlangga</div>
+          <p>Alamat: Jl. Lorem Ipsum No. 123, Surabaya</p>
+          <p>Kontak: info@arsip.unair.ac.id | (031) 1234567</p>
+          <div class="social">
+            <a href="#" aria-label="twitter">T</a>
+            <a href="#" aria-label="facebook">F</a>
+            <a href="#" aria-label="instagram">I</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-right">
+        <iframe
+          src="https://www.google.com/maps?q=Kantor+Manajemen+Universitas+Airlangga+Kampus+C&output=embed"
+          allowfullscreen="" loading="lazy"></iframe>
+      </div>
     </div>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!..."></iframe>
   </footer>
+
+  <script src="scripts.js"></script>
 
 </body>
 </html>
