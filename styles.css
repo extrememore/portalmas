@@ -388,6 +388,15 @@ header nav a:hover {
   border-radius: 8px;
   padding: 12px;
   box-shadow: 0 4px 14px rgba(2,36,71,0.06);
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 .team-photo {
   width: 80px;
