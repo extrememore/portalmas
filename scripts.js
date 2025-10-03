@@ -193,8 +193,45 @@ document.addEventListener('DOMContentLoaded', function () {
       // run immediately
       doSearch();
     }
+
   } catch (err) {
     // ignore malformed URL
   }
 
 });
+
+// Function to enlarge image
+function enlargeImage() {
+  const img = document.getElementById('detail-image');
+  if (!img) return;
+
+  // Create modal overlay
+  const modal = document.createElement('div');
+  modal.style.position = 'fixed';
+  modal.style.top = '0';
+  modal.style.left = '0';
+  modal.style.width = '100%';
+  modal.style.height = '100%';
+  modal.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+  modal.style.display = 'flex';
+  modal.style.alignItems = 'center';
+  modal.style.justifyContent = 'center';
+  modal.style.zIndex = '1000';
+  modal.style.cursor = 'pointer';
+
+  // Create enlarged image
+  const enlargedImg = document.createElement('img');
+  enlargedImg.src = img.src;
+  enlargedImg.alt = img.alt;
+  enlargedImg.style.maxWidth = '90%';
+  enlargedImg.style.maxHeight = '90%';
+  enlargedImg.style.objectFit = 'contain';
+
+  // Close modal on click
+  modal.addEventListener('click', function() {
+    document.body.removeChild(modal);
+  });
+
+  modal.appendChild(enlargedImg);
+  document.body.appendChild(modal);
+}

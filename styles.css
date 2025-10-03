@@ -646,3 +646,128 @@ iframe {
   header .logo img { height: 44px; }
   header .logo h1 { font-size: 1rem; }
 }
+
+/* Detail page styling */
+.arsip-detail {
+  background: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(3,65,120,0.1);
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.arsip-detail img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  display: block;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.arsip-detail h2 {
+  color: #004080;
+  margin-bottom: 12px;
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+.arsip-detail p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.arsip-detail p strong {
+  color: #07304a;
+}
+
+/* Detail page buttons */
+.header-with-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 16px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  text-align: center;
+  transition: transform 160ms cubic-bezier(.2,.8,.2,1), box-shadow 160ms ease, background-color 0.3s ease;
+  box-shadow: 0 4px 12px rgba(3,65,120,0.12);
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(3,65,120,0.18);
+  background-color: #0056b3;
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn:focus {
+  outline: 3px solid rgba(0,112,209,0.14);
+  outline-offset: 2px;
+}
+
+.btn-back {
+  background: #6c757d;
+  padding: 10px 16px;
+  font-size: 14px;
+}
+
+.btn-back:hover {
+  background: #5a6268;
+}
+
+.image-buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.btn-enlarge {
+  background-color: #007bff; /* solid blue background */
+  color: white;
+  border: none;
+  padding: 10px 16px; /* match back button padding */
+  font-size: 14px; /* match back button font size */
+  cursor: pointer;
+  border-radius: 4px;
+  margin-left: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-enlarge:hover {
+  background-color: #0056b3; /* darker solid blue on hover */
+}
+
+.btn-download {
+  background-color: #007bff; /* solid blue background */
+  color: white;
+  border: none;
+  padding: 10px 16px; /* match back button padding */
+  font-size: 14px; /* match back button font size */
+  cursor: pointer;
+  border-radius: 4px;
+  margin-left: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-download:hover {
+  background-color: #0056b3; /* darker solid blue on hover */
+}
